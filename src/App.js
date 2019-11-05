@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import BullshitList from './components/BullshitList'
 import Slider from './components/Slider'
+
+import { decrypData } from './service/decrypter'
+import bullshitdata from './data/bullshitdata.json'
+import trainingdata from './data/trainingdata.json'
+
 // import './App.css'
 
 function App(props) {
@@ -10,6 +15,10 @@ function App(props) {
   useEffect(() => {
     setThreshold(50)
     initBullshits()
+
+    // fetch('./data/finnnews.txt')
+    //   .then(res =>res.text())
+    //   .then(data => console.log(data))
   }, [])
 
   const initBullshits = () => {

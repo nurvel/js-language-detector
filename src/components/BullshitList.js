@@ -2,11 +2,11 @@ import React from 'react'
 
 const BullshitList = props => {
   const renderBullshit = item => {
-    const score = props.threshold >= item.score ? null : item.score
+    const score = props.threshold >= item.score ? null : item.score + "%"
     const text = props.threshold >= item.score ? item.bullshit : item.solved
 
     return (
-      <tr>
+      <tr key={text}>
         <td>{score}</td>
         <td>{text}</td>
       </tr>
@@ -18,8 +18,8 @@ const BullshitList = props => {
       <table>
         <thead>
           <tr>
-            <th>Score</th>
-            <th>bullshit</th>
+            <th>Todennäköisyys</th>
+            <th>Bullshit</th>
           </tr>
         </thead>
         <tbody>{props.bullshits.map(item => renderBullshit(item))}</tbody>
