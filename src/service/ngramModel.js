@@ -2,13 +2,9 @@ let profile
 const CUTOFF = 5
 
 export const createModel = async trainingData => {
-  //console.log('start create')
+  console.log('Start create model')
   return new Promise(async (resolve, reject) => {
     try {
-      //let filename = 'seitsemanveljesta'
-      //let filename = 'finnews'
-      //const training1 = await readFile(filename)
-      //console.log('data', training1)
       profile = getNgram(trainingData)
       resolve(profile)
     } catch (error) {
@@ -24,7 +20,7 @@ const getNgram = text => {
     let gram = text.substring(i, i + CUTOFF)
     ngrams.add(gram.toLowerCase())
   }
-  //console.log(ngrams.size)
+
   return ngrams
 }
 
@@ -35,6 +31,5 @@ export const scoreSentence = message => {
   sentenceProfile.forEach(x => {
     if (profile.has(x)) score++
   })
-  // console.log(score)
-  return score / sentenceProfile.size
+  return (score / sentenceProfile.size) * 100
 }

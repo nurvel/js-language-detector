@@ -1,4 +1,5 @@
-import ngram from './ngramModel'
+import { createModel, scoreSentence } from './ngramModel'
+
 const plain = 'abcdefghijklmnopqrstuvwxyzåäö'.split('')
 const ITERATIIONS = plain.length
 
@@ -23,7 +24,7 @@ const caesarCipher = (sentence, iteration) => {
 }
 
 export const decrypData = async (trainingData, cryptedData) => {
-  await ngram.createModel(trainingData)
+  await createModel(trainingData.trainingdata)
 
   const notSolved = cryptedData.bullshits.map(e => e.message)
   const solved = {}
@@ -31,7 +32,7 @@ export const decrypData = async (trainingData, cryptedData) => {
   for (let i = 1; i < ITERATIIONS; i++) {
     notSolved.forEach(sentence => {
       const decryptCandidate = caesarCipher(sentence, i)
-      const score = ngram.scoreSentence(decryptCandidate)
+      const score = scoreSentence(decryptCandidate)
 
       if (solved[sentence] === undefined || solved[sentence].score < score) {
         solved[sentence] = {

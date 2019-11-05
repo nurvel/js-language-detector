@@ -12,14 +12,22 @@ function App(props) {
   const [threshold, setThreshold] = useState('')
   const [bullshits, setBullshits] = useState([])
 
+
   useEffect(() => {
-    setThreshold(50)
+    setThreshold(80)
     initBullshits()
+
+    decrypData(trainingdata, bullshitdata).then(decrypteddata => {
+      console.log(decrypteddata)
+      setBullshits(decrypteddata)
+    })
 
     // fetch('./data/finnnews.txt')
     //   .then(res =>res.text())
     //   .then(data => console.log(data))
   }, [])
+
+
 
   const initBullshits = () => {
     console.log('Initing table')
@@ -46,6 +54,10 @@ function App(props) {
   const sliderChange = event => {
     setThreshold(event.target.value)
   }
+
+  // if (isLoading) {
+  //   return <div>Im loading buddy</div>
+  // }
 
   return (
     <div className="App">

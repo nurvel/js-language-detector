@@ -2,7 +2,7 @@ import React from 'react'
 
 const BullshitList = props => {
   const renderBullshit = item => {
-    const score = props.threshold >= item.score ? null : item.score + "%"
+    const score = props.threshold >= item.score ? "Bullshit" : Math.floor(item.score) + "%"
     const text = props.threshold >= item.score ? item.bullshit : item.solved
 
     return (
