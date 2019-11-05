@@ -1,12 +1,8 @@
 import React from 'react'
-import { Menu } from 'semantic-ui-react'
 
 const Slider = props => {
-
   return (
-    <Menu
-    floated='true'
-    >
+    <div>
       <input
         type="range"
         min="1"
@@ -15,7 +11,7 @@ const Slider = props => {
         onChange={props.sliderChange}
         className="slider"
       />
-    </Menu>
+    </div>
   )
 }
 
