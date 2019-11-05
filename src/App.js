@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react'
+import { Container, Loader, Dimmer } from 'semantic-ui-react'
+
 import BullshitList from './components/BullshitList'
 import Slider from './components/Slider'
 
@@ -12,43 +14,15 @@ function App(props) {
   const [threshold, setThreshold] = useState('')
   const [bullshits, setBullshits] = useState([])
 
-
   useEffect(() => {
-    setThreshold(80)
+    setThreshold(65)
     initBullshits()
-
-    decrypData(trainingdata, bullshitdata).then(decrypteddata => {
-      console.log(decrypteddata)
-      setBullshits(decrypteddata)
-    })
-
-    // fetch('./data/finnnews.txt')
-    //   .then(res =>res.text())
-    //   .then(data => console.log(data))
   }, [])
 
-
-
   const initBullshits = () => {
-    console.log('Initing table')
-    const bull1 = {
-      bullshit: 'Basdhullii shasdgasdgittii',
-      solved: 'Järki settii',
-      score: 90
-    }
-    const bull2 = {
-      bullshit: 'ads09ugjasdg',
-      solved: 'Semi settii',
-      score: 50
-    }
-    const bull3 = {
-      bullshit: 'Äasid asfuiafs',
-      solved: 'aoj Ei mitääasd',
-      score: 20
-    }
-
-    const templateArray = [bull1, bull2, bull3]
-    setBullshits(templateArray)
+    decrypData(trainingdata, bullshitdata).then(decrypteddata => {
+      setBullshits(decrypteddata)
+    })
   }
 
   const sliderChange = event => {
@@ -59,14 +33,28 @@ function App(props) {
   //   return <div>Im loading buddy</div>
   // }
 
+  if (bullshits.length === 0) {
+    return (
+      <Container>
+        <div className="App">
+          <Dimmer active={true}>
+            <Loader>Analysoidaan bullshit</Loader>
+          </Dimmer>
+        </div>
+      </Container>
+    )
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>Here should be the threshold: {threshold}</p>
-      </header>
-      <Slider sliderChange={sliderChange} threshold={threshold} />
-      <BullshitList bullshits={bullshits} threshold={threshold} />
-    </div>
+    <Container>
+      <div className="App">
+        <header className="App-header">
+          <p>Here should be the threshold: {threshold}</p>
+        </header>
+        <Slider sliderChange={sliderChange} threshold={threshold} />
+        <BullshitList bullshits={bullshits} threshold={threshold} />
+      </div>
+    </Container>
   )
 }
 
