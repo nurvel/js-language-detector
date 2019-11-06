@@ -9,7 +9,7 @@ function Content(props) {
 
   return (
     <Container text style={contentStyle}>
-      <Header as="h1">Tervetuloa bullshit-decryptauksen pariin!</Header>
+      <Header as="h1">Tervetuloa decryptauksen pariin!</Header>
       <p>
         Tämä sivu on ratkaisu Solidabiksen koodihaasteeseen. Tavoitteena oli
         decryptata salattuja lauseita ja suodattaa niistä suomenkieliset

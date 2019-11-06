@@ -1,17 +1,17 @@
 import Ngram from './ngram'
 
-const plain = 'abcdefghijklmnopqrstuvwxyzåäö'.split('')
-const ITERATIIONS = plain.length
+const alfabet = 'abcdefghijklmnopqrstuvwxyzåäö'.split('')
+const ITERATIIONS = alfabet.length
 
 export const getLetter = (letter, increment) => {
-  if (!plain.includes(letter.toLowerCase())) return letter
+  if (!alfabet.includes(letter.toLowerCase())) return letter
 
-  const index = plain.indexOf(letter.toLowerCase())
+  const index = alfabet.indexOf(letter.toLowerCase())
   const newIndex = index + increment
-  if (newIndex >= plain.length) {
-    return plain[newIndex - plain.length]
+  if (newIndex >= alfabet.length) {
+    return alfabet[newIndex - alfabet.length]
   }
-  return plain[index + increment]
+  return alfabet[index + increment]
 }
 
 export const caesarCipher = (sentence, iteration) => {

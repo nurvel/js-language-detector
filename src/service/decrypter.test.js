@@ -1,4 +1,4 @@
-import { getLetter, caesarCipher, decrypData } from './decrypter'
+import { getLetter, caesarCipher } from './decrypter'
 
 test('getLetter returns right charachers', () => {
   expect(getLetter('a', 1)).toBe('b')

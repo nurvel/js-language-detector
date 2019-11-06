@@ -6,7 +6,6 @@ import BullshitList from './components/BullshitList'
 import Footer from './components/Footer'
 
 import { decrypData } from './service/decrypter'
-// import { createModel } from './service/ngramModel'
 import bullshitdata from './data/bullshitdata.json'
 import trainingdata from './data/trainingdata.json'
 
@@ -15,18 +14,14 @@ function App(props) {
   const [bullshits, setBullshits] = useState([])
 
   useEffect(() => {
-    setThreshold(65)
+    setThreshold(65) // score above this is considered non-bullshit
     initBullshits()
   }, [])
 
   const initBullshits = async () => {
-    // const finnishModel = await  createModel(trainingdata)
-    // const decrypteddata = await  decrypData(finnishModel, bullshitdata)
-    // etBullshits(decrypteddata)
-
-    decrypData(trainingdata, bullshitdata).then(decrypteddata => {
-      setBullshits(decrypteddata)
-    })
+    decrypData(trainingdata, bullshitdata)
+      .then(decrypteddata => setBullshits(decrypteddata))
+      .catch(err => console.log('Error creating model & scoring data: ', err))
   }
 
   if (bullshits.length === 0) {

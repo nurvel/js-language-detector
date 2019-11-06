@@ -25,5 +25,3 @@ test('get ngrams', async () => {
   expect(tulos.size).toBe(juttu.size)
   expect(tulos).toEqual(juttu)
 })
-
-// test('Create Model', () => {})

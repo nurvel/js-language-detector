@@ -1,6 +1,6 @@
 export default class Ngram {
   constructor  () {
-    this.finnishProfile = null
+    this.languageProfile = null
     this.CUTOFF = 5
   }
 
@@ -8,7 +8,7 @@ export default class Ngram {
     console.log('Start create model')
     return new Promise(async (resolve, reject) => {
       try {
-        this.finnishProfile = await this.getNgram(trainingData)
+        this.languageProfile = await this.getNgram(trainingData)
         resolve()
       } catch (error) {
         reject(error)
@@ -32,7 +32,7 @@ export default class Ngram {
 
     let score = 0
     decryptCandidateProfile.forEach(x => {
-      if (this.finnishProfile.has(x)) score++
+      if (this.languageProfile.has(x)) score++
     })
     return (score / decryptCandidateProfile.size) * 100
   }
