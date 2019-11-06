@@ -27,27 +27,25 @@ function Content(props) {
               tulokset
             </Message.Item>
             <Message.Item>
-              Scorataan tulokset mallilla ja säilytetään parhaan tuloksen
-              (muistuttaa suomenkieltä) decryptattu lause
+              Scorataan tulokset ja säilytetään paras lause
+              (lähimpänä suomenkieltä)
             </Message.Item>
           </Message.List>
         </Message>
       </p>
       <p>
-        Non-bullshitiksi tunnistui 50 lausetta 200:sta. Klikkaamalla alla olevia
-        lauseita, näet alkuperäisen bullshitin tai parhaan mahdollisen
+        Non-bullshitiksi tunnistui 50 lausetta 200:sta. Alla näet alkuperäisen bullshitin ja parhaan mahdollisen
         käännöksen, sekä mallin laskeman todennäköisyyden non-bullsihitiksi.
-        Ennustavuutta on mahdollista parantaa mallin algoritmia kehittämällä tai
-        training dataa lisäämällä. Nyt tavoitteena oli lauseiden kategorisointi
+        Ennustavuutta on mahdollista parantaa algoritmia kehittämällä tai
+        training dataa lisäämällä. Tavoitteena oli lauseiden kategorisointi
         bullshit/non-bullshit, johon malli on riittävä. Alle 67%
         todennäköisyyden lauseet eivät ole järkevää suomenkieltä.
       </p>
       <p>
-        Toteutus on tehty JavaScriptillä ja UI Reactilla. Mallin luonti ja datan
+        Toteutus on tehty JavaScriptillä ja Reactilla. Mallin luonti ja datan
         analysointi tapahtuu selaimessa sivun lataamisen yhteydessä.
-        Todellisessa tuotannossa mallia ei olisi tarvetta luoda joka kerta
-        uudestaan ja palvelimelle olisi järkevää ulkoistaa datan käsittelyä ja
-        lataamista. Lähdekoodi löytyy
+        Tuotannossa mallia ei olisi tarvetta luoda joka kerta
+        uudestaan ja palvelimelle olisi järkevää ulkoistaa datan käsittelyä. Lähdekoodi löytyy
         <a
           target="_blank"
           rel="noopener noreferrer"
@@ -62,10 +60,10 @@ function Content(props) {
         <Message positive>
           <Grid columns="equal">
             <Grid.Row>
-              <Grid.Column>
+              <Grid.Column width={3} textAlign="center" verticalAlign="middle">
                 <Icon name="hand point up outline" size="big" />
               </Grid.Column>
-              <Grid.Column width={14}>
+              <Grid.Column width={12}>
                 Klikkaamalla alla olevia lauseita näet niiden alkuperäisen
                 muodon / parhaan suomenkieltä vastaavaan tuloksen.
               </Grid.Column>

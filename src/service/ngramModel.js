@@ -1,12 +1,12 @@
-let profile
+let finnishProfile
 const CUTOFF = 5
 
 export const createModel = async trainingData => {
   console.log('Start create model')
   return new Promise(async (resolve, reject) => {
     try {
-      profile = getNgram(trainingData)
-      resolve(profile)
+      finnishProfile = getNgram(trainingData)
+      resolve(finnishProfile)
     } catch (error) {
       reject(error)
     }
@@ -24,12 +24,12 @@ const getNgram = text => {
   return ngrams
 }
 
-export const scoreSentence = message => {
-  const sentenceProfile = getNgram(message)
+export const scoreSentence = decryptCandidate => {
+  const decryptCandidateProfile = getNgram(decryptCandidate)
 
   let score = 0
-  sentenceProfile.forEach(x => {
-    if (profile.has(x)) score++
+  decryptCandidateProfile.forEach(x => {
+    if (finnishProfile.has(x)) score++
   })
-  return (score / sentenceProfile.size) * 100
+  return (score / decryptCandidateProfile.size) * 100
 }

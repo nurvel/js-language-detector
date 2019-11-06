@@ -30,13 +30,13 @@ export const decrypData = async (trainingData, cryptedData) => {
   const solved = {}
 
   for (let i = 1; i < ITERATIIONS; i++) {
-    notSolved.forEach(sentence => {
-      const decryptCandidate = caesarCipher(sentence, i)
+    notSolved.forEach(message => {
+      const decryptCandidate = caesarCipher(message, i)
       const score = scoreSentence(decryptCandidate)
 
-      if (solved[sentence] === undefined || solved[sentence].score < score) {
-        solved[sentence] = {
-          bullshit: sentence,
+      if (solved[message] === undefined || solved[message].score < score) {
+        solved[message] = {
+          bullshit: message,
           solved: decryptCandidate,
           score: score
         }
