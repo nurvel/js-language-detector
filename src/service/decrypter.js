@@ -1,9 +1,9 @@
-import { createModel, scoreSentence } from './ngramModel'
+import Ngram from './ngram'
 
 const plain = 'abcdefghijklmnopqrstuvwxyzåäö'.split('')
 const ITERATIIONS = plain.length
 
-const getLetter = (letter, increment) => {
+export const getLetter = (letter, increment) => {
   if (!plain.includes(letter.toLowerCase())) return letter
 
   const index = plain.indexOf(letter.toLowerCase())
@@ -14,7 +14,7 @@ const getLetter = (letter, increment) => {
   return plain[index + increment]
 }
 
-const caesarCipher = (sentence, iteration) => {
+export const caesarCipher = (sentence, iteration) => {
   let decodedSentence = ''
   for (var i = 0; i < sentence.length; i++) {
     decodedSentence += getLetter(sentence.charAt(i), iteration)
@@ -24,15 +24,18 @@ const caesarCipher = (sentence, iteration) => {
 }
 
 export const decrypData = async (trainingData, cryptedData) => {
-  await createModel(trainingData.trainingdata)
+
+  const ngram = new Ngram()
+  await ngram.createModel(trainingData.trainingdata)
 
   const notSolved = cryptedData.bullshits.map(e => e.message)
   const solved = {}
 
   for (let i = 1; i < ITERATIIONS; i++) {
-    notSolved.forEach(message => {
+
+    for (let message of notSolved) {
       const decryptCandidate = caesarCipher(message, i)
-      const score = scoreSentence(decryptCandidate)
+      const score =  await ngram.scoreSentence(decryptCandidate)
 
       if (solved[message] === undefined || solved[message].score < score) {
         solved[message] = {
@@ -41,10 +44,10 @@ export const decrypData = async (trainingData, cryptedData) => {
           score: score
         }
       }
-    })
+    }
+
   }
 
   let arranged = Object.values(solved).sort((a, b) => b.score - a.score)
-  //arranged.forEach(x => console.log(x.solved, x.score))
   return arranged
 }

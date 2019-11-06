@@ -15,7 +15,7 @@ function Content(props) {
         decryptata salattuja lauseita ja suodattaa niistä suomenkieliset
         (non-bullshit), sekä esittää tulokset web-käyttöliittymässä.
       </p>
-      <p>
+      
         <Message>
           <Message.Header>Toteutus pähkinänkuoressa:</Message.Header>
           <Message.List as="ol">
@@ -32,7 +32,7 @@ function Content(props) {
             </Message.Item>
           </Message.List>
         </Message>
-      </p>
+      
       <p>
         Non-bullshitiksi tunnistui 50 lausetta 200:sta. Alla näet alkuperäisen bullshitin ja parhaan mahdollisen
         käännöksen, sekä mallin laskeman todennäköisyyden non-bullsihitiksi.
@@ -56,7 +56,7 @@ function Content(props) {
         </a>
         .
       </p>
-      <p>
+     
         <Message positive>
           <Grid columns="equal">
             <Grid.Row>
@@ -70,7 +70,7 @@ function Content(props) {
             </Grid.Row>
           </Grid>
         </Message>
-      </p>
+      
     </Container>
   )
 }
