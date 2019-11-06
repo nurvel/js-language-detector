@@ -24,8 +24,8 @@ const BullshitItem = props => {
   return (
     <Table.Row onClick={handleToggle}>
       <Table.Cell>
-        <Label as="a" color="green" ribbon >
-          {Math.floor(props.item.score) + ' %  non-bullshit'}
+        <Label as="a" color="green" ribbon>
+          {Math.floor(props.item.score) + '%  non-bullshit'}
         </Label>
       </Table.Cell>
       <Table.Cell>{props.item.solved}</Table.Cell>

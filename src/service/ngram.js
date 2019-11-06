@@ -1,5 +1,5 @@
 export default class Ngram {
-  constructor  () {
+  constructor() {
     this.languageProfile = null
     this.CUTOFF = 5
   }
