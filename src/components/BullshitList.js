@@ -1,25 +1,27 @@
 import React from 'react'
-import { Table } from 'semantic-ui-react'
+import { Table, Container } from 'semantic-ui-react'
 import BullshitItem from './BullshitItem'
 
 const BullshitList = props => {
+  const contentStyle = {
+    paddingTop: 20,
+    paddingBottom: 20
+  }
+
   return (
-    <div>
-      <Table celled striped>
-        <Table.Header>
-          <Table.Row key="header">
-            <Table.HeaderCell>Score</Table.HeaderCell>
-            <Table.HeaderCell>Text</Table.HeaderCell>
-            <Table.HeaderCell>Toggle</Table.HeaderCell>
-          </Table.Row>
-        </Table.Header>
+    <Container text style={contentStyle}>
+      <Table basic>
         <Table.Body>
           {props.bullshits.map(item => (
-            <BullshitItem key={item.bullshit} item={item} toggle={item.score <= props.threshold} />
+            <BullshitItem
+              key={item.bullshit}
+              item={item}
+              toggle={item.score <= props.threshold}
+            />
           ))}
         </Table.Body>
       </Table>
-    </div>
+    </Container>
   )
 }
 
