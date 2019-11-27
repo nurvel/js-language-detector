@@ -1,3 +1,9 @@
+> :1st_place_medal:
+> WINNER OF CODING CHALLEGE
+> Article series about the contest and solutions:
+> https://www.solidabis.com/ajankohtaista/koodihaastekatsaus-osa-1-voittajat-ja-yleiskatsaus/
+
+
 
 # JS text decypter and language analyzer with React UI
 
