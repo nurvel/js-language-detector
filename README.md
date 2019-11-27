@@ -3,7 +3,7 @@
 > Article series about the contest and solutions:
 > https://www.solidabis.com/ajankohtaista/koodihaastekatsaus-osa-1-voittajat-ja-yleiskatsaus/
 
-
+The app is hosted in Heroku: http://finnish-detector.herokuapp.com/ 
 
 # JS text decypter and language analyzer with React UI
 
